@@ -2,8 +2,8 @@
 
 Reverse engineered and C ported **MT15.DRV** (MT32-Sound-Driver) of [Stunts](https://www.mobygames.com/game/stunts) 1.0 and 1.1 in one source
 
-Assembler source can be rebuild to 100% binary exact version of the original
-Assembler can be partially mixed with C ported functions or all functions can be replaced by C code
+1. Assembler source can be rebuild to 100% binary exact version of the original
+2. Assembler can be partially mixed with C ported functions or all functions can be replaced by C code
 
 # History:
 
