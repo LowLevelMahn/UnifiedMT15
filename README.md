@@ -10,7 +10,7 @@ Reverse engineered and C ported **MT15.DRV** (MT32-Sound-Driver) of [Stunts](htt
 Stunts 1.0 MT15.DRV seems to sound better than the 1.1 version (some strange slowdowns happen)
 i want to understand what the differences are and how to port that stuff to C
 
-**Result**: the timing code is different - only some lines of assembler nothing big
+**Result**: the timing code is different - but only some lines of assembler nothing big
 
 # Structure:
 
