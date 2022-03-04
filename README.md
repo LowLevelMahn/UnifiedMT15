@@ -1,6 +1,7 @@
 # UnifiedMT15
 
 Reverse engineered and C ported **MT15.DRV** (MT32-Sound-Driver) of [Stunts](https://www.mobygames.com/game/stunts) 1.0 and 1.1 in one source
+The Sound driver is not a dos typical com or exe file, its starts at offset 0 with an jump table to the driver functions and gets loaded into its own segment by the game
 
 1. Assembler source can be rebuild to 100% binary exact version of the original
 2. Assembler can be partially mixed with C ported functions or all functions can be replaced by C code
