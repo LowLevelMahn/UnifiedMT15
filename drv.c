@@ -837,8 +837,11 @@ uint16_t __cdecl far c_tsub18()
 
 void __cdecl far c_tsub3(uint16_t midi_channel_, struct struct2_t far *struct1_, uint16_t key_note_number_, uint16_t velocity_, struct struct1_t far* struct2_)
 {
+  // key_note_number_ is only a byte - but at least a word on the stack
+  // both fields are set with the same value
   struct1_->key_note_number1 = LO(key_note_number_);
   struct1_->key_note_number2 = LO(key_note_number_);
+  
   struct1_->velocity = ( struct2_->byte_15 == 0) ? 127 : LO(velocity_);
 
   send_note_on_event_midi_msg(midi_channel_, key_note_number_, struct1_->velocity);
