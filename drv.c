@@ -18,8 +18,8 @@ static inline uint8_t inb(uint16_t port_){ (void)port_; return 0; }
 static inline void outb(uint16_t port_, uint8_t value_){}
 static inline uint16_t inw(uint16_t port_){ (void)port_; return 0; }
 static inline void outw(uint16_t port_, uint16_t value_){}
-static inline void cli(){}
-static inline void sti(){}
+static inline void cli(void){}
+static inline void sti(void){}
 
 #define CODE_SEG_VAR
 
@@ -57,10 +57,10 @@ static inline uint16_t inw(uint16_t port_);
 static inline void outw(uint16_t port_t, uint16_t value_);
 #pragma aux outw = "out dx, ax" parm[dx][ax]
 
-static inline void cli();
+static inline void cli(void);
 #pragma aux cli = "cli"
 
-static inline void sti();
+static inline void sti(void);
 #pragma aux sti = "sti"
 
 //-----------------------
@@ -597,7 +597,7 @@ STATIC_INLINE void ISUB_CDECL near c_send_midi_sysex_msg(const uint8_t far* buff
 #endif
 }
 
-uint16_t __cdecl far c_tsub20()
+uint16_t __cdecl far c_tsub20(void)
 {
   uint16_t value = 0;
   
@@ -615,7 +615,7 @@ uint16_t __cdecl far c_tsub20()
   return value;
 }
 
-void __cdecl far c_tsub2()
+void __cdecl far c_tsub2(void)
 {
   int16_t channel = 0; // needs to be signed // use int8_t
   for(channel = 15; channel >= 0; --channel) // [15-0]
@@ -627,7 +627,7 @@ void __cdecl far c_tsub2()
 
 #ifdef __clang__
 
-static inline void dx_dec_based_delay(){}
+static inline void dx_dec_based_delay(void){}
 
 #else
 
@@ -635,7 +635,7 @@ static inline void dx_dec_based_delay(){}
 // TODO: replace that with PIT based delay - if the PIT is fast engough
 
 // (underflows on first dec - so its [0,65535,...,0] = 65537 iterations)
-static inline void dx_dec_based_delay();
+static inline void dx_dec_based_delay(void);
 #pragma aux dx_dec_based_delay = \
 "  mov dx, 0" \  
 "dec_loop:" \
@@ -645,7 +645,7 @@ modify[dx]
 
 #endif
 
-uint16_t __cdecl far c_tsub0()
+uint16_t __cdecl far c_tsub0(void)
 {
   c_write_midi_cmd(MPU_401_CMD_RESET);
 
@@ -662,7 +662,7 @@ uint16_t __cdecl far c_tsub0()
   return 0xFFF6; // = -10
 }
 
-void __cdecl far c_tsub1()
+void __cdecl far c_tsub1(void)
 {
   c_tsub2();
 }
@@ -810,27 +810,27 @@ void __cdecl far c_tsub19(uint16_t size_, const uint8_t far* buffer_)
   }
 }
 
-void __cdecl far c_tsub14()
+void __cdecl far c_tsub14(void)
 {
   // nothing
 }
 
-void __cdecl far c_tsub15()
+void __cdecl far c_tsub15(void)
 {
   // nothing
 }
 
-void __cdecl far c_tsub16()
+void __cdecl far c_tsub16(void)
 {
   // nothing
 }
 
-void __cdecl far c_tsub17()
+void __cdecl far c_tsub17(void)
 {
   // nothing
 }
 
-uint16_t __cdecl far c_tsub18()
+uint16_t __cdecl far c_tsub18(void)
 {
   return 0xFF;
 }
